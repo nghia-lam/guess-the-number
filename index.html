@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b18">
+  <meta name="description" content="Game đoán số từ 1 đến 100 với gợi ý, khoảng cách và kỹ năng đặc biệt.">
+  <title>Trúng Tim — Game đoán số</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script defer src="./js/config.js"></script>
+  <script defer src="./js/hints.js"></script>
+  <script defer src="./js/skills.js"></script>
+  <script defer src="./js/game.js"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="screen start-screen" data-screen="start">
+      <div class="hero">
+        <div class="hero-mark" aria-hidden="true">
+          <span class="orbit orbit-one"></span>
+          <span class="orbit orbit-two"></span>
+          <span class="heart-core">♥</span>
+        </div>
+        <p class="eyebrow">MINI GAME • 1–100</p>
+        <h1>TRÚNG TIM</h1>
+        <p class="hero-copy">Đọc gợi ý, cảm nhận khoảng cách và tìm ra con số bí mật trước khi thời gian kết thúc.</p>
+      </div>
+
+      <div class="level-picker" aria-labelledby="level-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">BƯỚC 01</p>
+            <h2 id="level-title">Chọn cấp độ</h2>
+          </div>
+          <span class="level-status" data-selected-label>Mầm Non</span>
+        </div>
+
+        <div class="level-grid" role="group" aria-label="Chọn cấp độ chơi">
+          <button class="level-card is-selected" type="button" data-level="preschool" aria-pressed="true">
+            <span class="level-number">01</span>
+            <span class="level-name">Mầm Non</span>
+            <span class="level-meta">7 lượt • 60 giây</span>
+            <span class="level-description">1 gợi ý và đầy đủ 3 kỹ năng.</span>
+          </button>
+          <button class="level-card" type="button" data-level="oracle" aria-pressed="false">
+            <span class="level-number">02</span>
+            <span class="level-name">Tiên Tri</span>
+            <span class="level-meta">5 lượt • 50 giây</span>
+            <span class="level-description">1 gợi ý và 2 kỹ năng ngẫu nhiên.</span>
+          </button>
+          <button class="level-card" type="button" data-level="divine" aria-pressed="false">
+            <span class="level-number">03</span>
+            <span class="level-name">Thần Thánh</span>
+            <span class="level-meta">1 lượt • 40 giây</span>
+            <span class="level-description">3 gợi ý, 1 kỹ năng và một cơ hội duy nhất.</span>
+          </button>
+        </div>
+
+        <button class="primary-button start-button" type="button" data-action="start">
+          <span>Bắt đầu đoán</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="screen game-screen" data-screen="game" hidden>
+      <header class="game-header">
+        <button class="icon-button" type="button" data-action="exit" aria-label="Thoát ván chơi">←</button>
+        <div>
+          <p class="eyebrow">CẤP ĐỘ</p>
+          <h2 data-level-name>Mầm Non</h2>
+        </div>
+        <div class="timer-box" aria-label="Thời gian còn lại">
+          <span class="timer-value" data-time>60</span>
+          <span class="timer-unit">GIÂY</span>
+        </div>
+      </header>
+
+      <div class="timer-track" aria-hidden="true">
+        <span class="timer-fill" data-timer-fill></span>
+      </div>
+
+      <div class="game-layout">
+        <div class="play-column">
+          <section class="panel clue-panel" aria-labelledby="clue-title">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">THÔNG TIN</p>
+                <h3 id="clue-title">Gợi ý của bạn</h3>
+              </div>
+              <span class="counter-badge" data-hint-count>1 gợi ý</span>
+            </div>
+            <div class="clue-list" data-hints></div>
+          </section>
+
+          <section class="panel skill-panel" aria-labelledby="skill-title">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">TRỢ GIÚP</p>
+                <h3 id="skill-title">Kỹ năng</h3>
+              </div>
+              <span class="counter-badge" data-skill-count>3 kỹ năng</span>
+            </div>
+            <div class="skill-grid" data-skills></div>
+            <p class="skill-message" data-skill-message>Chọn thời điểm thích hợp để sử dụng kỹ năng.</p>
+          </section>
+        </div>
+
+        <div class="guess-column">
+          <section class="guess-stage" aria-labelledby="guess-title">
+            <div class="attempts-row">
+              <span>Lượt còn lại</span>
+              <strong data-attempts>7</strong>
+            </div>
+
+            <div class="feedback" data-feedback data-tone="idle">
+              <span class="feedback-icon" data-feedback-icon aria-hidden="true">◎</span>
+              <div>
+                <p class="feedback-title" data-feedback-title>Sẵn sàng chưa?</p>
+                <p class="feedback-copy" data-feedback-copy>Nhập một số nguyên từ 1 đến 100.</p>
+              </div>
+            </div>
+
+            <form class="guess-form" data-guess-form>
+              <label for="guess-input" id="guess-title">Con số của bạn</label>
+              <div class="guess-controls">
+                <input id="guess-input" data-guess-input type="number" min="1" max="100" step="1" inputmode="numeric" autocomplete="off" placeholder="?" required>
+                <button class="primary-button" type="submit" data-guess-button>Đoán</button>
+              </div>
+              <p class="form-message" data-form-message aria-live="polite"></p>
+            </form>
+
+            <div class="history-block">
+              <div class="history-heading">
+                <span>Các số đã đoán</span>
+                <span data-history-count>0</span>
+              </div>
+              <div class="guess-history" data-history>
+                <span class="empty-history">Chưa có số nào</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen result-screen" data-screen="result" hidden>
+      <div class="result-card" data-result-card>
+        <div class="result-symbol" data-result-symbol aria-hidden="true">♥</div>
+        <p class="eyebrow" data-result-eyebrow>KẾT QUẢ</p>
+        <h1 data-result-title>Trúng Tim!</h1>
+        <p class="result-copy" data-result-copy>Bạn đã tìm ra con số bí mật.</p>
+
+        <div class="secret-reveal">
+          <span>Số bí mật</span>
+          <strong data-secret>?</strong>
+        </div>
+
+        <div class="result-stats">
+          <div>
+            <span>Lượt đã dùng</span>
+            <strong data-result-attempts>0</strong>
+          </div>
+          <div>
+            <span>Thời gian còn</span>
+            <strong data-result-time>0 giây</strong>
+          </div>
+          <div>
+            <span>Gần nhất</span>
+            <strong data-result-closest>—</strong>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button class="secondary-button" type="button" data-action="levels">Chọn cấp độ</button>
+          <button class="primary-button" type="button" data-action="replay">Chơi lại</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="swap-dialog" data-swap-dialog aria-labelledby="swap-title">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow">ĐỔI GỢI Ý</p>
+          <h2 id="swap-title">Chọn gợi ý muốn đổi</h2>
+        </div>
+        <button class="icon-button" value="cancel" aria-label="Đóng">×</button>
+      </div>
+      <p>Gợi ý được chọn sẽ được thay bằng một gợi ý mới, không trùng thông tin cũ.</p>
+      <div class="swap-options" data-swap-options></div>
+    </form>
+  </dialog>
+
+  <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+</body>
+</html>
