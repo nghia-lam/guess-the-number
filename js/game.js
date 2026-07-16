@@ -267,7 +267,7 @@
     renderHistory();
 
     if (distance === 0) {
-      setFeedback("♥", "Trúng Tim!", `Bạn đã tìm ra số ${state.secret}.`, "success");
+      setFeedback("♥", "Chính xác!", `Bạn đã tìm ra số ${state.secret}.`, "success");
       endGame(true, "correct");
       return;
     }
@@ -384,7 +384,7 @@
     elements.resultCard.classList.toggle("is-loss", !won);
     elements.resultSymbol.textContent = won ? "♥" : "✦";
     elements.resultEyebrow.textContent = won ? "CHIẾN THẮNG" : "VÁN CHƠI KẾT THÚC";
-    elements.resultTitle.textContent = won ? "Trúng Tim!" : (reason === "time" ? "Hết giờ!" : "Chưa trúng rồi");
+    elements.resultTitle.textContent = won ? "Chính xác!" : (reason === "time" ? "Hết giờ!" : "Chưa trúng rồi");
     elements.resultCopy.textContent = won
       ? "Bạn đã tìm ra con số bí mật."
       : (reason === "time" ? "Thời gian đã kết thúc." : "Bạn đã sử dụng hết lượt đoán.");
