@@ -17,9 +17,50 @@
     <section class="screen start-screen" data-screen="start">
       <div class="hero">
         <div class="hero-mark" aria-hidden="true">
-          <span class="orbit orbit-one"></span>
-          <span class="orbit orbit-two"></span>
-          <span class="number-core" data-logo-symbol>0</span>
+          <span class="orbit orbit-one">
+            <span class="orbit-glyph glyph-top">0</span>
+            <span class="orbit-glyph glyph-right">π</span>
+            <span class="orbit-glyph glyph-bottom">β</span>
+            <span class="orbit-glyph glyph-left">∞</span>
+          </span>
+          <span class="orbit orbit-two">
+            <span class="orbit-glyph glyph-top">1</span>
+            <span class="orbit-glyph glyph-right">α</span>
+            <span class="orbit-glyph glyph-bottom">Ω</span>
+          </span>
+          <svg class="pixel-core" viewBox="0 0 100 100" role="img" aria-label="Logo chữ N dạng pixel">
+            <defs>
+              <linearGradient id="pixel-gradient" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#8b5cf6"/>
+                <stop offset="0.52" stop-color="#4f7cff"/>
+                <stop offset="1" stop-color="#22d3ee"/>
+              </linearGradient>
+              <filter id="pixel-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2.4" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <g fill="url(#pixel-gradient)" filter="url(#pixel-glow)">
+              <rect class="pixel p1" x="18" y="10" width="11" height="11" rx="2"/>
+              <rect class="pixel p2" x="18" y="23" width="11" height="11" rx="2"/>
+              <rect class="pixel p3" x="18" y="36" width="11" height="11" rx="2"/>
+              <rect class="pixel p4" x="18" y="49" width="11" height="11" rx="2"/>
+              <rect class="pixel p5" x="18" y="62" width="11" height="11" rx="2"/>
+              <rect class="pixel p6" x="18" y="75" width="11" height="11" rx="2"/>
+              <rect class="pixel p7" x="31" y="23" width="11" height="11" rx="2"/>
+              <rect class="pixel p8" x="31" y="36" width="11" height="11" rx="2"/>
+              <rect class="pixel p9" x="44" y="36" width="11" height="11" rx="2"/>
+              <rect class="pixel p10" x="44" y="49" width="11" height="11" rx="2"/>
+              <rect class="pixel p11" x="57" y="49" width="11" height="11" rx="2"/>
+              <rect class="pixel p12" x="57" y="62" width="11" height="11" rx="2"/>
+              <rect class="pixel p13" x="70" y="10" width="11" height="11" rx="2"/>
+              <rect class="pixel p14" x="70" y="23" width="11" height="11" rx="2"/>
+              <rect class="pixel p15" x="70" y="36" width="11" height="11" rx="2"/>
+              <rect class="pixel p16" x="70" y="49" width="11" height="11" rx="2"/>
+              <rect class="pixel p17" x="70" y="62" width="11" height="11" rx="2"/>
+              <rect class="pixel p18" x="70" y="75" width="11" height="11" rx="2"/>
+            </g>
+          </svg>
         </div>
         <p class="eyebrow">MINI GAME</p>
         <h1>NuBi</h1>
@@ -146,7 +187,7 @@
 
     <section class="screen result-screen" data-screen="result" hidden>
       <div class="result-card" data-result-card>
-        <div class="result-symbol" data-result-symbol aria-hidden="true">♥</div>
+        <div class="result-symbol" data-result-symbol aria-hidden="true">✓</div>
         <p class="eyebrow" data-result-eyebrow>KẾT QUẢ</p>
         <h1 data-result-title>Chính xác!</h1>
         <p class="result-copy" data-result-copy>Bạn đã tìm ra con số bí mật.</p>
