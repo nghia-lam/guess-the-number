@@ -55,6 +55,33 @@
   let toastTimer = 0;
   let state = null;
 
+  function startLogoAnimation() {
+    const symbol = $("[data-logo-symbol]");
+    if (!symbol) return;
+
+    const symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "π", "α", "β", "Ω"];
+    if (typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      symbol.textContent = "π";
+      return;
+    }
+
+    let index = 0;
+    window.setInterval(() => {
+      index = (index + 1) % symbols.length;
+      symbol.textContent = symbols[index];
+      if (typeof symbol.animate === "function") {
+        symbol.animate(
+          [
+            { opacity: 0.2, transform: "rotate(-10deg) scale(0.72)" },
+            { opacity: 1, transform: "rotate(4deg) scale(1.08)" },
+            { opacity: 1, transform: "rotate(-4deg) scale(1)" }
+          ],
+          { duration: 460, easing: "cubic-bezier(.2,.8,.2,1)" }
+        );
+      }
+    }, 500);
+  }
+
   function createState(levelId) {
     const level = config.levels[levelId];
     const secret = 1 + Math.floor(Math.random() * 100);
@@ -448,4 +475,5 @@
   });
 
   selectLevel(selectedLevelId);
+  startLogoAnimation();
 })();
