@@ -4,6 +4,10 @@ Website tĩnh triển khai theo đặc tả FINAL V7. Game chọn ngẫu nhiên 
 
 Ba kỹ năng trong game: **Chẵn Hay Lẻ**, **Loại Một Nửa** và **Đổi Gợi Ý**.
 
+Nhận diện NuBi sử dụng bảng màu xanh điện, tím và cyan. Khi đoán đúng, game hiển thị **Chính xác!** cùng ký hiệu `✓`.
+
+Logo **Pixel Orbit** sử dụng chữ N ghép từ các ô pixel phát sáng và hai quỹ đạo chứa `0`, `1`, `π`, `α`, `β`, `Ω`, `∞`.
+
 ## Chạy trên máy
 
 Mở PowerShell hoặc Terminal tại thư mục dự án:
