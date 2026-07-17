@@ -35,7 +35,7 @@
   };
 
   const distanceBands = [
-    { min: 0, max: 0, label: "Trúng Tim", icon: "♥", tone: "success" },
+    { min: 0, max: 0, label: "Chính xác", icon: "✓", tone: "success" },
     { min: 1, max: 3, label: "Kề bên rồi", icon: "⌂", tone: "near" },
     { min: 4, max: 8, label: "Ở Đầu Phố", icon: "▦", tone: "near" },
     { min: 9, max: 15, label: "Ở Ngoại Ô", icon: "◇", tone: "idle" },
