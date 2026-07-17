@@ -1,4 +1,4 @@
-# Boong — Game đoán số
+# NuBi — Game đoán số
 
 Website tĩnh triển khai theo đặc tả FINAL V7. Game chọn ngẫu nhiên một số từ 1–100 và có ba cấp độ: Mầm Non, Tiên Tri, Thần Thánh.
 
